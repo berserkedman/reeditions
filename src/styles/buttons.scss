@@ -1,0 +1,102 @@
+.button-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  z-index: 20;
+  margin-top: 25px;
+}
+
+.action-button {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'October Crow', sans-serif;
+  font-size: clamp(19px, 2.5vw, 25px);
+  color: #FFFFFF;
+  background: linear-gradient(135deg, 
+    #330000 0%, 
+    #660000 25%, 
+    #8B0000 50%, 
+    #660000 75%, 
+    #330000 100%
+  );
+  border: 2px solid #660000;
+  border-radius: 12px;
+  padding: 20px 55px;
+  min-width: 300px;
+  text-align: center;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+  will-change: transform;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.08),
+    0 0 20px rgba(139, 0, 0, 0.2);
+  
+  span {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+      rgba(255, 69, 0, 0.4) 0%, 
+      rgba(139, 0, 0, 0.2) 50%, 
+      transparent 70%
+    );
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: #8B0000;
+    box-shadow: 
+      0 0 30px rgba(255, 69, 0, 0.4),
+      0 0 60px rgba(255, 69, 0, 0.2),
+      0 10px 30px rgba(0, 0, 0, 0.7),
+      inset 0 -3px 10px rgba(0, 0, 0, 0.6),
+      inset 0 2px 6px rgba(255, 255, 255, 0.1);
+    
+    &::before {
+      width: 350px;
+      height: 350px;
+    }
+  }
+
+  &:active {
+    transform: translateY(-2px) scale(0.98);
+  }
+}
+
+@media (max-width: 768px) {
+  .button-section {
+    gap: 15px;
+  }
+  
+  .action-button {
+    padding: 18px 45px;
+    min-width: 260px;
+    font-size: clamp(17px, 3vw, 21px);
+  }
+}
+
+@media (max-width: 480px) {
+  .action-button {
+    padding: 16px 40px;
+    min-width: 240px;
+  }
+}
